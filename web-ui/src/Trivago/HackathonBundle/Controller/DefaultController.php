@@ -19,7 +19,6 @@ class DefaultController extends Controller
     public function proxyGetAction(Request $request)
     {
 
-
         $callback = $request->get('callback');
         $route = $request->get('route');
 
@@ -88,4 +87,28 @@ class DefaultController extends Controller
 
         return $response;
     }
+
+    public function hotelResultsAction() {
+
+        $items = array(
+            array(
+                'name' => 'Hotel foo',
+                'image' => 'http://lorempixel.com/400/200',
+                'description' => 'fooo',
+                'link' => 'http://www.google.de',
+            ),
+            array(
+                'name' => 'Hotel foo',
+                'image' => 'http://lorempixel.com/400/200',
+                'description' => 'foo',
+                'link' => 'http://www.google.de',
+            ),
+        );
+
+        return $this->render('TrivagoHackathonBundle:Default:hotel_results.html.twig', array(
+            'items' => $items,
+        ));
+
+    }
+
 }

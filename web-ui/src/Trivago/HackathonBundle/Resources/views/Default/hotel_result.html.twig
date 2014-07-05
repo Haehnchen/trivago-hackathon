@@ -1,0 +1,24 @@
+<div class="hotel-item">
+    <h2>{{ item.name }}</h2>
+
+    <div class="hotel-item-row">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                {{ item.description }}
+            </div>
+
+            <div class="col-md-6">
+                <img style="max-width: 100%" src="{{ item.image }}">
+            </div>
+
+            <div class="button-row">
+                <a class="btn btn-primary btn-sm" target="_blank" href="{{ item.link }}">Anzeigen</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
