@@ -15,3 +15,10 @@ trivago_hackathon_proxy_post:
     requirements:
         route:  .*
     defaults: { _controller: TrivagoHackathonBundle:Default:proxyPost }
+
+trivago_hackathon_reults:
+    path:     /hotel/result
+    methods:  [GET]
+    requirements:
+        route:  .*
+    defaults: { _controller: TrivagoHackathonBundle:Default:hotelResults }
