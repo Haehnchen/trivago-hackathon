@@ -14,3 +14,19 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	padding-top: 50px;
 	padding-bottom: 3px;
 }
+
+.map-overlay {
+	position: absolute;
+	top: -35px;
+	left: 15px;
+	height: 100%!important;
+	z-index: 100000;
+}
+
+@-webkit-keyframes marker_animation {
+	0% { -webkit-transform: scale(0); -webkit-transition-timing-function: ease-out; }
+	25% { -webkit-transform: scale(1.5); -webkit-transition-timing-function: ease-in; }
+	50% { -webkit-transform: scale(0.75); -webkit-transition-timing-function: ease-out; }
+	75% { -webkit-transform: scale(1.1); -webkit-transition-timing-function: ease-in; }
+	100% { -webkit-transform: scale(1); -webkit-transition-timing-function: ease-out; }
+}

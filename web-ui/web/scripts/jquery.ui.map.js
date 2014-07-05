@@ -132,6 +132,10 @@
 			this.get('map').controls[position].push(this._unwrap(panel));
 			return this;
 		},
+
+		getMap: function () {
+			return this.instance.map;
+		},
 		
 		/**
 		 * Adds a Marker to the map

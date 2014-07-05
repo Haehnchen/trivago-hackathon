@@ -1,0 +1,37 @@
+
+.gmap-tooltip {
+    position:absolute;
+    width: 250px;
+    padding: 10px;
+    font-size: 9pt;
+    font-family: Verdana;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    border:1px solid #fafafa;
+    box-shadow: 0 0 2px 2px rgba(0,0,0, 0.03);
+}
+
+.gmap-tooltip h2 {
+    font-size:12px;
+    font-weight: bold;
+    margin:0 0 4px 0;
+    padding:0;
+}
+
+.gmap-tooltip .rating,
+.gmap-tooltip .description,
+.gmap-tooltip .city,
+.gmap-tooltip .street {
+    font-size:11px;
+    color: #b1b1b1;
+}
+
+.gmap-tooltip .row {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.gmap-tooltip img {
+    max-width: 100%;
+}

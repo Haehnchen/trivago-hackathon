@@ -1,3 +1,24 @@
 trivago_hackathon_homepage:
     path:     /
     defaults: { _controller: TrivagoHackathonBundle:Default:index }
+
+trivago_hackathon_proxy_get:
+    path:     /Webservice/{route}
+    methods:  [GET]
+    requirements:
+        route:  .*
+    defaults: { _controller: TrivagoHackathonBundle:Default:proxyGet }
+
+trivago_hackathon_proxy_post:
+    path:     /Webservice/{route}
+    methods:  [POST]
+    requirements:
+        route:  .*
+    defaults: { _controller: TrivagoHackathonBundle:Default:proxyPost }
+
+trivago_hackathon_reults:
+    path:     /hotel/result
+    methods:  [GET]
+    requirements:
+        route:  .*
+    defaults: { _controller: TrivagoHackathonBundle:Default:hotelResults }
