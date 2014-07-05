@@ -19,10 +19,47 @@ class DefaultController extends Controller
     public function proxyGetAction(Request $request)
     {
 
+
         $callback = $request->get('callback');
         $route = $request->get('route');
 
+        if($route == 'search') {
+
+            $array = array();
+            foreach($request->query->all() as $key => $value) {
+
+                if($key == 'callback' || $key == '_') {
+                    continue;
+                }
+
+                $array[$key] = $value;
+            }
+
+            return $this->getResponsePostFake($callback, $route, $array);
+        }
+
         $response = new JsonResponse(json_decode(file_get_contents('http://' . static::PROXY . '/Webservice/' . $route), true), 200);
+        $response->setCallback($callback);
+
+        return $response;
+    }
+
+    private function getResponsePostFake($callback, $route, array $array)
+    {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'http://' . static::PROXY . '/Webservice/' . $route);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        //curl_setopt($ch, CURLOPT_POSTFIELDS, '{"kmPerDay":10,"startDate":1404580320186,"position":{"lat":100.0,"lon":10.0},"priceRange":{"min":20,"max":100}};');
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($array));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+        $result = curl_exec($ch);
+
+        $response = new JsonResponse(json_decode($result, true), 200);
         $response->setCallback($callback);
 
         return $response;
