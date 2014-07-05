@@ -4,14 +4,20 @@ $(function() {
         $(this).closest('.hotel-result').remove();
     });
 
-    $( "#hotel-result" ).click(function(e) {
+    $( "#hotel-result-button" ).click(function(e) {
 
         e.preventDefault();
 
         $.ajax({
             url: "/hotel/result"
         }).done(function(data) {
-            $( "body" ).append($(data));
+
+            if ($("#hotel-result").length > 0){
+                $("#hotel-result").remove();
+            }
+
+            $('body').append($(data));
+
         });
 
     });
