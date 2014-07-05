@@ -1,0 +1,14 @@
+<div class="big-picture first-container">
+	<div id="maps_canvas" class="container-fluid"></div>
+</div>
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.extensions.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.microdata.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.microformat.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.overlays.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.rdfa.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.services.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/map.js") }}"></script>
+{% endblock %}

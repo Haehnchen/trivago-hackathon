@@ -10,18 +10,20 @@
 	    <link rel="stylesheet" type="text/css" href="{{ asset('styles/jquery-ui.theme.css') }}">
 	    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap-theme.css') }}">
 	    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap.css') }}">
+	    <link rel="stylesheet" type="text/css" href="{{ asset('styles/styles.css') }}">
+	    <link rel="stylesheet" type="text/css" href="{{ asset('styles/slider.css') }}">
 	    <script type="text/javascript" src="{{ asset('scripts/jquery.js') }}"></script>
 	    <script type="text/javascript" src="{{ asset('scripts/jquery-ui.js') }}"></script>
 	    <script type="text/javascript" src="{{ asset('scripts/bootstrap.js') }}"></script>
 	    <script type="text/javascript" src="{{ asset('scripts/bootstrap-datepicker.js') }}"></script>
+	    <script type="text/javascript" src="{{ asset('scripts/bootstrap-slider.js') }}"></script>
+	    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBVcxaUpeuWn3ErTkCZT3IESGo06w28eBs&sensor=TRUE"></script>
     </head>
     <body>
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			{% block menu %}{% endblock %}
 		</nav>
-		<div class="container">
-			{% block body %}{% endblock %}
-		</div>
+		{% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
