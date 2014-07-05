@@ -1,5 +1,4 @@
-
-var hotelApiBackend = 'hotel.json';
+var hotelApiBackend = '/Webservice/hotel/dortmund?callback=?';
 
 var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
@@ -8,7 +7,6 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
     google.maps.event.addListener(marker, 'mouseover', function() {
 
-        //$.getJSON("http://192.168.245.141:8080/Webservice/hotel/dortmund", function(data) {
         $.getJSON(hotelApiBackend, function(data) {
             var foo = markerTemplate;
 
