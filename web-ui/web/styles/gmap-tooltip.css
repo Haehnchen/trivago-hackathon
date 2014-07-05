@@ -1,8 +1,8 @@
 
 .gmap-tooltip {
     position:absolute;
-    width: 200px;
-    padding: 5px;
+    width: 250px;
+    padding: 10px;
     font-size: 9pt;
     font-family: Verdana;
     background-color: #fff;
@@ -29,6 +29,7 @@
 
 .gmap-tooltip .row {
     margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .gmap-tooltip img {

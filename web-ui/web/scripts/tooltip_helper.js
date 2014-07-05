@@ -1,5 +1,8 @@
 var hotelApiBackend = '/Webservice/hotel/dortmund?callback=?';
 
+var markerTemplate = '<div class="row"><div class="col-md-6"><h2 class="name">%name%</h2><div class="rating">Rating: %rating%</div></div><div class="col-md-6"><img src="%imageURL%"></div></div><div class="description">%description%</div>';
+
+
 var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
     var tooltip = new Tooltip({map: marker.map}, marker);
