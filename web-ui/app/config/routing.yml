@@ -1,0 +1,4 @@
+trivago_hackathon:
+    resource: "@TrivagoHackathonBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,3 @@
+trivago_hackathon_homepage:
+    path:     /
+    defaults: { _controller: TrivagoHackathonBundle:Default:index }

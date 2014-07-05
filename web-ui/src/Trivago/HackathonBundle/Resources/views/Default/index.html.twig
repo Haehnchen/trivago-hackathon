@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+{% block menu %}
+	{% include "::menu.html.twig" %}
+	{% block site_menu %}
+		<div>
+
+		</div>
+	{% endblock %}
+{% endblock %}
+{% block body %}
+	Hello {{ name }}!
+{% endblock %}
