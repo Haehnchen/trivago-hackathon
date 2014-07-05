@@ -1,6 +1,6 @@
 var hotelApiBackend = '/Webservice/hotel/dortmund?callback=?';
 
-var markerTemplate = '<div class="row"><div class="col-md-6"><h2 class="name">%name%</h2><div class="rating">Rating: %rating%</div></div><div class="col-md-6"><img src="%imageURL%"></div></div><div class="description">%description%</div>';
+var markerTemplate = '<div class="row"><div class="col-md-6"><h2 class="name">%name%</h2><div class="rating">Rating: %rating%</div><div class="price rating">Preis: %price%</div></div><div class="col-md-6"><img src="%imageURL%"></div></div><div class="description">%description%</div>';
 
 
 var addMarkerTooltipEvents = function(marker, markerTemplate) {
@@ -12,6 +12,8 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
         $.getJSON(hotelApiBackend, function(data) {
             var foo = markerTemplate;
+
+            data['price'] = (Math.round(parseFloat(data['price']) * 100) / 100) + ' &euro;';
 
             for (var k in data){
                 foo = foo.replace('%' + k + '%', data[k]);
