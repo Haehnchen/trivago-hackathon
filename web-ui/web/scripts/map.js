@@ -109,6 +109,7 @@ $(document).ready(function () {
 			$("#maps_canvas").trigger('selectMarker', { position: options.position, additional: options.additional });
 		});
 		markers.push(marker[0]);
+		$mapscanvas.trigger('markerAdded', {'marker': marker[0], 'additional':options.additional});
 	};
 
 	$mapscanvas3.on('addMarker', function (options){
