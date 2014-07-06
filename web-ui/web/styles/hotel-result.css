@@ -49,3 +49,8 @@
     right:10px;
     cursor: pointer;
 }
+
+.hotel-result .col-md-8 {
+    font-size:11px;
+    color: #b1b1b1;
+}
