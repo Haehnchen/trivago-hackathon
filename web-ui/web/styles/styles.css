@@ -10,10 +10,6 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	position: relative;
 	display:inline-block;
 }
-.first-container{
-	padding-top: 50px;
-	padding-bottom: 3px;
-}
 
 .map-overlay {
 	position: absolute;
@@ -27,21 +23,36 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
-	opacity: 0.3;
+	opacity: 0.7;
 	width: 200px;
-	height: 375px;
 	display: inline-block;
 	z-index: 500;
 	background-color: white;
 	border-radius: 5px;
 	border: 1px solid #DDD;
-	padding: 5px;
+	padding: 10px;
 	-webkit-transition: opacity 0.4s;
 	box-shadow: 1px 1px 5px black;
 }
 
+.map-config .form-group {
+    margin-bottom: 0;
+}
+
+.map-config .form-control {
+    margin-bottom:5px;
+}
+
+.map-config .btn{
+    margin-top:10px;
+}
+
 .map-config:hover {
 	opacity: 1;
+}
+
+.adp {
+	display: none;
 }
 
 @-webkit-keyframes marker_animation {

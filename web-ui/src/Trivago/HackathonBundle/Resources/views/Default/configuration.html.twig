@@ -5,35 +5,35 @@
 				<form id="travelData" name="settings" action="" typ="post">
 
 					<div class="input date">
-						<label>Start Date</label><br/>
-						<input  type="text" placeholder="dd/mm/yyyy" class="form-control" name="startDate" id="startDate">
+						<label>Start Zeitpunkt:</label><br/>
+						<input type="text" placeholder="dd/mm/yyyy" class="form-control" name="startDate" id="startDate" value="09/07/2014">
 					</div>
 
 					<!--Start City-->
 					<div class="input-group text">
-						<label>Start City:</label><br/>
-						<input name="city" id="pac-input" class="form-control" type="text" placeholder="Enter a location">
+						<label>Ort:</label><br/>
+						<input name="city" id="pac-input" class="form-control" type="text" placeholder="Hamburg, Deutschland">
 					</div>
 
 					<div class="input-group select">
-						<label>Backpacker Level</label><br/>
+						<label>Erfahrungslevel:</label><br/>
 						<select name="kmPerDay" class="form-control">
-							<option>Select your Level</option>
-							<option value="20">Beginner</option>
-							<option value="30">Semi Expert</option>
-							<option value="40">Expert</option>
-							<option value="80">God Like (or bicycle)</option>
+							<option value="20" selected>Anfänger</option>
+							<option value="30">Amateur</option>
+							<option value="40">Profi</option>
+                            <option value="42">Marathon</option>
+							<option value="80">Gott (oder Fahrrad)</option>
 						</select>
 					</div>
 
 					<div class="input-group slider">
-						<label>Price Range</label><br/>
+						<label>Preispanne:</label><br/>
 						<input id="sl2" class="span2" type="text" class="form-control" data-slider-value="[250,450]" data-slider-step="5" data-slider-max="1000" data-slider-min="10" value="">
 					</div>
 
 					<div class="input-group text">
-						<input type="text" name="minPrice" id="minPrice" class="form-control" data-shadow="Min Price">
-						<input type="text" name="maxPrice" id="maxPrice" class="form-control" data-shadow="Max Price">
+						<input type="hidden" name="minPrice" id="minPrice" class="form-control" data-shadow="Min Price">
+						<input type="hidden" name="maxPrice" id="maxPrice" class="form-control" data-shadow="Max Price">
 					</div>
 					<input type="submit" value="Suchen" class="form-control btn btn-success"/>
 				</form>
