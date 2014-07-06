@@ -139,7 +139,7 @@ class DefaultController extends Controller
 
         foreach($result as $hotel) {
 
-            if(!isset($hotel['id'])) {
+            if(!isset($hotel['hotelBasic']['id'])) {
                 $items[] = array(
                     'id' => 'n/a',
                     'name' => 'Hotel foo id: n/a',
