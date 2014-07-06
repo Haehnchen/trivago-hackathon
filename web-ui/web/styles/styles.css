@@ -10,10 +10,6 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	position: relative;
 	display:inline-block;
 }
-.first-container{
-	padding-top: 50px;
-	padding-bottom: 3px;
-}
 
 .map-overlay {
 	position: absolute;
