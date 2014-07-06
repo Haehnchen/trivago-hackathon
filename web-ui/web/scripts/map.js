@@ -56,7 +56,6 @@ $(document).ready(function () {
 		clearMarker();
 		renderRoute();
 		gmap.panTo(new google.maps.LatLng(marker.position.k, marker.position.B));
-		generateMarkers(marker.position.k, marker.position.B);
 	}
 
 	function generateMarkers(ln, la)
@@ -101,20 +100,25 @@ $(document).ready(function () {
 			fillOpacity: 1,
 			strokeWeight: 0
 		};
-		options = $.extend({}, {position: "51.24619,6.77034", 'marker': google.maps.MarkerWithLabel, 'additional': {}, 'icon': icon, 'animation': 1, opacity: 0}, options);
+		options = $.extend({}, {position: "51.24619,6.77034", 'marker': google.maps.Marker, 'additional': {}, 'icon': icon, 'animation': 1, opacity: 0}, options);
 		var $mapscanvas = $("#maps_canvas");
 		var marker = $mapscanvas.gmap('addMarker', options);
 		marker.click(function (e) {
 			selectMarker($.extend({}, options, { 'animation': 0, 'opacity': 1 }));
-			$("#maps_canvas").trigger('selectMarker', { position: options.position, additional: options.additional });
+			$("#maps_canvas").trigger('selectMarker', { position: options.position.k + "," + options.position.B, additional: options.additional });
 		});
 		markers.push(marker[0]);
 		$mapscanvas.trigger('markerAdded', {'marker': marker[0], 'additional':options.additional});
 	};
 
-	$mapscanvas3.on('addMarker', function (options){
-		addMarker(options);
+	$mapscanvas3.on('addMarker', function (options, data){
+		console.log(data);
+		addMarker(data);
 	});
+
+	$mapscanvas3.on('clearMarker', function () {
+		clearMarker();
+	})
 
 	$("#mybutton").click(function () {
 		clearMarker();

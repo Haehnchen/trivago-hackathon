@@ -10,7 +10,6 @@ $(document).ready(function(){
 		$("#maxPrice").val($('#sl2').val().split(',')[1]);
 	});
 
-
 	var minmax=$("#sl2").attr("data-slider-value").replace("[","");
 	minmax=minmax.replace("]","");
 
@@ -51,15 +50,15 @@ $(document).ready(function(){
 		console.debug(data);
 
 		$.ajax({
-			type:"POST",
+			type: "POST",
 			dataType: 'jsonp',
 			url: "http://dennis-notebook/Webservice/search",
-			data: data,
+			data: JSON.stringify(data),
 			success: function( msg ) {
 				console.debug("sendData"+msg);
 				$(msg.list).each(function () {
 					console.log(this);
-					$("#maps_canvas").trigger('addMarker', {position: this.position,additional:this.id});
+					$("#maps_canvas").trigger('addMarker', {position: this.position.lat + "," + this.position.lon,additional:this.id});
 				})
 			}
 		});
@@ -67,6 +66,10 @@ $(document).ready(function(){
 	var input = /** @type {HTMLInputElement} */(
 		document.getElementById('pac-input'));
 
+	$("#maps_canvas").on('selectMarker', function(e, data){
+		var split = data.position.split(',');
+		sendData({lat: split[0], lon:split[1]});
+	});
 
 	var autocomplete = new google.maps.places.Autocomplete(input);
 
