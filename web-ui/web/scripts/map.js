@@ -1,11 +1,24 @@
 $(document).ready(function () {
 	var $mapscanvas3 = $("#maps_canvas");
-	var $mapscanvas2 = $mapscanvas3;
-	var gmap = $mapscanvas2.gmap({'center': new google.maps.LatLng(51.2384547,6.8143503), 'zoom': 11}).gmap('getMap');
+	var gmap = $mapscanvas3.gmap({'center': new google.maps.LatLng(51.2384547,6.8143503), 'zoom': 11}).gmap('getMap');
 	var directionService = new google.maps.DirectionsService();
-	var directionDisplay = new google.maps.DirectionsRenderer({preserveViewport: true});
+	var directionDisplay = new google.maps.DirectionsRenderer({preserveViewport: true, hideRouteList: true, suppressInfoWindows: true});
 	directionDisplay.setMap(gmap);
-	directionDisplay.setPanel($mapscanvas2[0]);
+	directionDisplay.setPanel($mapscanvas3[0]);
+
+	var defaultIcon = {
+		path: 'M -10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0',
+		fillColor: '#663399',
+		fillOpacity: 1,
+		strokeWeight: 0
+	};
+
+	var selectedIcon = {
+		path: 'M -10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0',
+		fillColor: 'green',
+		fillOpacity: 1,
+		strokeWeight: 0
+	};
 
 	var markers = [];
 	var selected_markers = [];
@@ -45,6 +58,7 @@ $(document).ready(function () {
 		directionService.route(request, function(response, status) {
 			console.log(status);
 			if (status == google.maps.DirectionsStatus.OK) {
+				directionDisplay.setMap(gmap);
 				directionDisplay.setDirections(response);
 			}
 		});
@@ -52,6 +66,8 @@ $(document).ready(function () {
 
 	function selectMarker(marker)
 	{
+		console.log(marker);
+		marker = $.extend({}, marker, { 'animation': 0, 'opacity': 1, icon: selectedIcon });
 		selected_markers.push(marker);
 		clearMarker();
 		renderRoute();
@@ -93,32 +109,40 @@ $(document).ready(function () {
 		}
 	};
 
+	window.resetMarker = function(){
+		selected_markers = [];
+		clearMarker();
+		directionDisplay.setMap(null);
+	};
+
 	window.addMarker = function (options) {
-		var icon = {
-			path: 'M -10,0a10,10 0 1,0 20,0a10,10 0 1,0 -20,0',
-			fillColor: '#663399',
-			fillOpacity: 1,
-			strokeWeight: 0
-		};
-		options = $.extend({}, {position: "51.24619,6.77034", 'marker': google.maps.Marker, 'additional': {}, 'icon': icon, 'animation': 1, opacity: 0}, options);
+
+		options = $.extend({}, {position: "51.24619,6.77034", 'marker': google.maps.Marker, 'additional': {}, 'icon': defaultIcon, 'animation': 1, opacity: 0}, options);
 		var $mapscanvas = $("#maps_canvas");
 		var marker = $mapscanvas.gmap('addMarker', options);
 		marker.click(function (e) {
-			selectMarker($.extend({}, options, { 'animation': 0, 'opacity': 1 }));
-			$("#maps_canvas").trigger('selectMarker', { position: options.position.k + "," + options.position.B, additional: options.additional });
+			var optionsn = $.extend({}, options, { 'animation': 0, 'opacity': 1 });
+			$("#maps_canvas").trigger('selectMarker', { position: options.position.k + "," + options.position.B, additional: options.additional, options: optionsn });
 		});
 		markers.push(marker[0]);
-		$mapscanvas.trigger('markerAdded', {'marker': marker[0], 'additional':options.additional});
+		$mapscanvas.trigger('markerAdded', {'marker': marker[0], 'additional':options.additional, options:options});
 	};
 
 	$mapscanvas3.on('addMarker', function (options, data){
-		console.log(data);
 		addMarker(data);
+	});
+
+	$mapscanvas3.on('selectMarker', function (e, data) {
+		selectMarker(data.options);
+	});
+
+	$mapscanvas3.on('reset', function (e, data){
+		resetMarker();
 	});
 
 	$mapscanvas3.on('clearMarker', function () {
 		clearMarker();
-	})
+	});
 
 	$("#mybutton").click(function () {
 		clearMarker();
