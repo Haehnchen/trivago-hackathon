@@ -4,7 +4,7 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	width: 100%;
 	overflow: hidden;
 }
-.big-picture>div{
+.big-picture>#maps_canvas{
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -21,6 +21,27 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	left: 15px;
 	height: 100%!important;
 	z-index: 100000;
+}
+
+.map-config {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	opacity: 0.3;
+	width: 200px;
+	height: 375px;
+	display: inline-block;
+	z-index: 500;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #DDD;
+	padding: 5px;
+	-webkit-transition: opacity 0.4s;
+	box-shadow: 1px 1px 5px black;
+}
+
+.map-config:hover {
+	opacity: 1;
 }
 
 @-webkit-keyframes marker_animation {

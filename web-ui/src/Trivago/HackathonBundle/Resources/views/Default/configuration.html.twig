@@ -1,42 +1,41 @@
-<div style="position: absolute; bottom: 0; left: 10px; width: 200px; z-index: 1000;">
+<div class="map-config">
 	<div class="row">
-		<h1>Setup</h1><br/>
-		<div class='col-sm-6'>
+		<div class='col-sm-12'>
 			<div class="form-group">
 				<form id="travelData" name="settings" action="" typ="post">
 
 					<div class="input date">
 						<label>Start Date</label><br/>
-						<input  type="text" placeholder="dd/mm/yyyy" name="startDate" id="startDate">
+						<input  type="text" placeholder="dd/mm/yyyy" class="form-control" name="startDate" id="startDate">
 					</div>
 
 					<!--Start City-->
 					<div class="input-group text">
 						<label>Start City:</label><br/>
-						<input name="city" id="pac-input" class="controls" type="text" placeholder="Enter a location">
+						<input name="city" id="pac-input" class="form-control" type="text" placeholder="Enter a location">
 					</div>
 
 					<div class="input-group select">
 						<label>Backpacker Level</label><br/>
-						<select name="kmPerDay">
+						<select name="kmPerDay" class="form-control">
 							<option>Select your Level</option>
 							<option value="20">Beginner</option>
 							<option value="30">Semi Expert</option>
 							<option value="40">Expert</option>
-							<option value="80">God Like</option>
+							<option value="80">God Like (or bicycle)</option>
 						</select>
 					</div>
 
 					<div class="input-group slider">
 						<label>Price Range</label><br/>
-						<input id="sl2" class="span2" type="text" data-slider-value="[250,450]" data-slider-step="5" data-slider-max="1000" data-slider-min="10" value="" style="">
+						<input id="sl2" class="span2" type="text" class="form-control" data-slider-value="[250,450]" data-slider-step="5" data-slider-max="1000" data-slider-min="10" value="">
 					</div>
 
 					<div class="input-group text">
-						<input type="text" name="minPrice" id="minPrice" readonly="">
-						<input type="text" name="maxPrice" id="maxPrice" readonly="">
+						<input type="text" name="minPrice" id="minPrice" class="form-control" data-shadow="Min Price">
+						<input type="text" name="maxPrice" id="maxPrice" class="form-control" data-shadow="Max Price">
 					</div>
-					<input type="submit" value="gimme! gimme!"/>
+					<input type="submit" value="Suchen" class="form-control btn btn-success"/>
 				</form>
 			</div>
 		</div>
