@@ -1,4 +1,5 @@
 <div class="big-picture first-container">
+	{% include "TrivagoHackathonBundle:Default:configuration.html.twig" %}
 	<div id="maps_canvas" class="container-fluid"></div>
 	<div id="overlay" class="map-overlay">
 		<button id="mybutton">Click me!</button>
@@ -16,4 +17,5 @@
 	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.rdfa.js") }}"></script>
 	<script type="text/javascript" src="{{ asset("scripts/jquery.ui.map.services.js") }}"></script>
 	<script type="text/javascript" src="{{ asset("scripts/map.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("scripts/configuration.js") }}"></script>
 {% endblock %}
