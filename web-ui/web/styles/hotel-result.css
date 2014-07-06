@@ -5,18 +5,18 @@
 }
 
 .hotel-item {
-    padding:20px;
+    padding:10px;
 }
 
 .hotel-item-row {
-    padding:10px;
+    padding:3px;
     margin-bottom: 10px;
 }
 
 .hotel-item h2 {
     margin:0;
     padding:0;
-    font-size:16px;
+    font-size:14px;
     font-weight: bold;
 }
 
@@ -34,7 +34,7 @@
     position: fixed;
     z-index: 1000;
 
-    bottom:80px;
+    bottom:30px;
     right:30px;
     color: #808080;
 
