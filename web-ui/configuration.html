@@ -58,7 +58,7 @@
                  $.ajax({
                      type:"GET",
                      dataType: 'jsonp',
-                     url: "http://dennis-notebook/Webservice/city/"+city,
+                     url: "/Webservice/city/"+city,
                      success: function( msg ) {
                         sendData(msg);
                      }
@@ -81,7 +81,7 @@
                  $.ajax({
                      type:"POST",
                      dataType: 'jsonp',
-                     url: "http://dennis-notebook/Webservice/search",
+                     url: "/Webservice/search",
                      data: data,
                      success: function( msg ) {
                          console.debug(msg);
