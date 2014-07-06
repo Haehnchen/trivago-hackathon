@@ -37,6 +37,8 @@ class DefaultController extends Controller
             return $this->getResponsePostFake($callback, $route, $array);
         }
 
+		$route = explode('/', $route);
+	    $route = implode('/', array_map(function ($i) { return urlencode($i); }, $route));
         $response = new JsonResponse(json_decode(file_get_contents('http://' . static::PROXY . '/Webservice/' . $route), true), 200);
         $response->setCallback($callback);
 
@@ -53,6 +55,7 @@ class DefaultController extends Controller
         curl_setopt($ch, CURLOPT_POST, 1);
         //curl_setopt($ch, CURLOPT_POSTFIELDS, '{"kmPerDay":10,"startDate":1404580320186,"position":{"lat":100.0,"lon":10.0},"priceRange":{"min":20,"max":100}};');
 
+	    var_dump($array);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($array));
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
