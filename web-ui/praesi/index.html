@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>Gib mir die Route!</title>
+
+	<link href="examples/fixed-positioning.css" rel="stylesheet" type="text/css" />
+	<link href="examples/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="bg1" data-0="background-position:0px 0px;" data-end="background-position:-500px -10000px;"></div>
+	<div id="bg2" data-0="background-position:0px 0px;" data-end="background-position:-500px -8000px;"></div>
+	<div id="bg3" data-0="background-position:0px 0px;" data-end="background-position:-500px -6000px;"></div>
+
+	<div id="progress" data-0="width:0%;background:hsl(200, 100%, 50%);" data-end="width:100%;background:hsl(920, 100%, 50%);"></div>
+
+	<div id="intro" data-0="opacity:1;transform:rotate(0deg);transform-origin:0 0;" data-500="opacity:0;top:-10%;transform:rotate(-90deg);" >
+		<h1>A long long Time ago....</h1>
+		<h2>There was a guy who wants to backpack</h2>
+		<!--p class="arrows">▼&nbsp;▼&nbsp;▼</p-->
+	</div>
+
+
+
+	<div id="transform" data-500="transform:scale(0);" data-1000="transform:scale(1);opacity:1;" data-1600="" data-1700="transform:scale(5) ;opacity:0;">
+		<h2>To see this, or that...(or the real movie cow)</h2>
+		<img  src="img/IMAG1427.jpg" width="200px"/>
+	</div>
+
+	<div id="properties" data-1700="top:100%;" data-2200="top:0%;" data-3000="display:block;" data-3700="top:-100%;display:none;">
+		<h2>First....</h2>
+		<p>the guy has to plan the route</p>
+		<img src="img/karte.png"/>
+	</div>
+
+	<div id="easing_wrapper" data-0="display:none;" data-3900="display:block;" data-4900="background:rgba(0, 0, 0, 0);color[swing]:rgb(0,0,0);" data-5900="background:rgba(0,0,0,1);color:rgb(255,255,255);" data-6000="top:0%;" data-8000="top:-100%;">
+		<div id="easing" data-3900="left:100%" data-4600="left:25%;">
+			<h2>But that is not enough...</h2>
+			<p>after the route was planned</p>
+			<p data-5000="opacity:0;font-size:100%;" data-5900="opacity:1;font-size:150%;" data-8000="opacity:0;">
+					some bedrooms must be organized on another plattform.
+					<br/>
+					
+					<img src="img/trivago.png" width="700px"/>	
+					<br/>
+					And the Guy asked himself and the universe<br/>
+					"Why can't I do both steps in one?"
+			</p>
+		
+		</div>
+	</div>
+
+	<div id="download" data-9000="top[cubic]:100%;border-radius[cubic]:0em;background:rgb(0,50,100);border-width:0px;" data-10000="top:-100%;border-radius:2em;background:rgb(190,230,255);border-width:10px;">
+		<h2>But now there are 4 pals with a great Idea and the following architecture!</h2>
+		<h3 style="color:red; margin:10px 0;" > 	ATTENTION!!! NERD STUFF</h3>
+		<img src="img/arch.png" width="850px">	
+		<br/>
+		<a href="">
+			<img src="img/logo.png" style="margin-top:200px;">
+		</a>
+			
+	</div>
+	
+	
+	
+
+	<!--div id="scrollbar" data-0="top:0%;margin-top:2px;" data-end="top:100%;margin-top:-52px;"></div-->
+
+	<script type="text/javascript" src="dist/skrollr.min.js"></script>
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="../skrollr-ie/dist/skrollr.ie.min.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript">
+	var s = skrollr.init({
+		edgeStrategy: 'set',
+		easing: {
+			WTF: Math.random,
+			inverted: function(p) {
+				return 1-p;
+			}
+		}
+	});
+	</script>
+</body>
+
+</html>
