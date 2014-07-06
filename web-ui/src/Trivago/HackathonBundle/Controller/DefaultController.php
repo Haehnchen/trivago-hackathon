@@ -117,16 +117,41 @@ class DefaultController extends Controller
     public function hotelResultsPostAction(Request $request) {
 
 
-        $items = array();
         $hotels = $request->request->get('hotels');
+        $callback = $request->get('callback');
 
+        $ids = array();
         foreach($hotels as $hotel) {
-            $items[] = array(
-                'name' => 'Hotel foo id:' . $hotel['id'],
-                'image' => 'http://lorempixel.com/400/200',
-                'description' => 'fooo',
-            );
+            $ids[] = $hotel['id'];
         }
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'http://' . static::PROXY . '/Webservice/hotels');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($ids));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
+        $result = json_decode(curl_exec($ch), true);
+
+        $items = array();
+
+        foreach($result as $hotel) {
+
+            if(!isset($hotel['hotelBasic']['id'])) {
+                $items[] = array(
+                    'id' => 'n/a',
+                    'name' => 'Hotel foo id: n/a',
+                    'imageURL' => 'http://lorempixel.com/400/200',
+                    'description' => 'fooo',
+                );
+            } else {
+                $items[] = $hotel;
+            }
+
+        }
+
 
         return $this->render('TrivagoHackathonBundle:Default:hotel_results.html.twig', array(
             'items' => $items,

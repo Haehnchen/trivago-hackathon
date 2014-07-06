@@ -38,3 +38,12 @@ var addMarkerWithTooltip = function(options) {
 
     return marker;
 };
+
+
+$(function() {
+
+    $("#maps_canvas").on("markerAdded", function(event, param1) {
+        addMarkerTooltipEvents(param1.marker, markerTemplate);
+    });
+
+});

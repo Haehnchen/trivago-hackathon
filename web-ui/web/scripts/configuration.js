@@ -30,7 +30,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:"GET",
 			dataType: 'jsonp',
-			url: "http://dennis-notebook/Webservice/city/"+city,
+			url: "/Webservice/city/"+city,
 			success: function( msg ) {
 				var $mapscanvas = $("#maps_canvas");
 				$mapscanvas.trigger('reset');
@@ -58,7 +58,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			dataType: 'jsonp',
-			url: "http://dennis-notebook/Webservice/search",
+			url: "/Webservice/search",
 			data: JSON.stringify(data),
 			success: function( msg ) {
 				console.debug("sendData"+msg);

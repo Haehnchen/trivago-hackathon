@@ -17,8 +17,7 @@ $(function() {
     });
 
     $("#maps_canvas").on("selectMarker", function(event, param1) {
-        console.log(param1);
-        ids.push({'id': Math.floor((Math.random() * 100) + 1)});
+        ids.push({'id': param1.additional});
         $.post("/hotel/result", { hotels: ids }).done(hotel_result);
     });
 
