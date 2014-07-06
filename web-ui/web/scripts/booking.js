@@ -17,7 +17,14 @@ $(function() {
     });
 
     $("#maps_canvas").on("selectMarker", function(event, param1) {
-        ids.push({'id': param1.additional});
+
+        $('.gmap-tooltip').remove();
+
+        if(param1.additional.type == 'initial') {
+            return;
+        }
+
+        ids.push({'id': param1.additional.id});
         $.post("/hotel/result", { hotels: ids }).done(hotel_result);
     });
 
