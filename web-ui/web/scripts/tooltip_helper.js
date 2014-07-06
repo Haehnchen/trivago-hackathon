@@ -2,34 +2,44 @@ var hotelApiBackend = '/Webservice/hotel/';
 
 var markerTemplate = '<div class="row"><div class="col-md-6"><h2 class="name">%name%</h2><div class="rating">Rating: %rating%</div><div class="price rating">Preis: %price%</div></div><div class="col-md-6"><img src="%imageURL%"></div></div><div class="description">%description%</div>';
 
-
 var addMarkerTooltipEvents = function(marker, markerTemplate, id) {
 
     var tooltip = new Tooltip({map: marker.map}, marker);
     tooltip.bindTo("text", marker, "tooltip");
 
+    var myVar;
+    var xhr;
+
     google.maps.event.addListener(marker, 'mouseover', function() {
 
         $('.gmap-tooltip').remove();
+        clearTimeout(myVar);
 
-        $.getJSON(hotelApiBackend + id + '?callback=?', function(data) {
-            var foo = markerTemplate;
+        myVar = setTimeout(function(){
+            xhr = $.getJSON(hotelApiBackend + id + '?callback=?', function(data) {
+                var foo = markerTemplate;
 
-            data['price'] = (Math.round(parseFloat(data['price']) * 100) / 100) + ' &euro;';
 
-            for (var k in data){
-                foo = foo.replace('%' + k + '%', data[k]);
-            }
+                data['price'] = (Math.round(parseFloat(data['price']) * 100) / 100) + ' &euro;';
 
-            $('.gmap-tooltip').remove();
+                for (var k in data){
+                    foo = foo.replace('%' + k + '%', data[k]);
+                }
 
-            tooltip.addTip(foo);
-            tooltip.getPos2(marker.getPosition());
-        });
+                $('.gmap-tooltip').remove();
+
+                tooltip.addTip(foo);
+                tooltip.getPos2(marker.getPosition());
+            });
+        }, 200);
 
     });
 
     google.maps.event.addListener(marker, 'mouseout', function() {
+        if(xhr){
+            xhr.abort();
+        }
+        clearTimeout(myVar);
         tooltip.removeTip();
         $('.gmap-tooltip').remove();
     });
