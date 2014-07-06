@@ -10,6 +10,8 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
     google.maps.event.addListener(marker, 'mouseover', function() {
 
+        $('.gmap-tooltip').remove();
+
         $.getJSON(hotelApiBackend, function(data) {
             var foo = markerTemplate;
 
@@ -19,6 +21,8 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
                 foo = foo.replace('%' + k + '%', data[k]);
             }
 
+            $('.gmap-tooltip').remove();
+
             tooltip.addTip(foo);
             tooltip.getPos2(marker.getPosition());
         });
@@ -27,6 +31,7 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
     google.maps.event.addListener(marker, 'mouseout', function() {
         tooltip.removeTip();
+        $('.gmap-tooltip').remove();
     });
 
 };
@@ -43,6 +48,11 @@ var addMarkerWithTooltip = function(options) {
 $(function() {
 
     $("#maps_canvas").on("markerAdded", function(event, param1) {
+
+        if(param1.additional.type == 'selected') {
+            return;
+        }
+
         addMarkerTooltipEvents(param1.marker, markerTemplate);
     });
 
