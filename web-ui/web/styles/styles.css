@@ -31,9 +31,13 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	background-color: white;
 	border-radius: 5px;
 	border: 1px solid #DDD;
-	padding: 5px;
+	padding: 10px;
 	-webkit-transition: opacity 0.4s;
 	box-shadow: 1px 1px 5px black;
+}
+
+.map-config .form-control {
+    margin-bottom:5px;
 }
 
 .map-config:hover {
