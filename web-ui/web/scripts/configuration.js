@@ -76,9 +76,15 @@ $(document).ready(function(){
 	$mapscanvas2.on('selectMarker', function(e, data){
 		console.log(data);
 		if(data.position != undefined && typeof data.position != "string")
+		{
+			if(data.additional != undefined && data.additional.type == 'initial')
+				return;
 			sendData({lat: data.position.k, lon: data.position.B});
-		else
+		} else {
+			if(data.options.additional != undefined && data.options.additional.type == 'initial')
+				return;
 			sendData({lat: data.options.position.k, lon: data.options.position.B});
+		}
 	});
 
 	var thrown = false;
