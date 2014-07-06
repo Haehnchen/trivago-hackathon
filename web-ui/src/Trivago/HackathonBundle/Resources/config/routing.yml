@@ -22,3 +22,10 @@ trivago_hackathon_reults:
     requirements:
         route:  .*
     defaults: { _controller: TrivagoHackathonBundle:Default:hotelResults }
+
+trivago_hackathon_reults_post:
+    path:     /hotel/result
+    methods:  [POST]
+    requirements:
+        route:  .*
+    defaults: { _controller: TrivagoHackathonBundle:Default:hotelResultsPost }

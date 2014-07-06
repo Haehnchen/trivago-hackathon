@@ -29,7 +29,7 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
         tooltip.removeTip();
     });
 
-}
+};
 
 var addMarkerWithTooltip = function(options) {
 
