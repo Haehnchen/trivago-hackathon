@@ -104,7 +104,7 @@ $(document).ready(function () {
 		markers = [];
 		for(var i = 0; i < selected_markers.length; i++)
 		{
-			var marker = selected_markers[i];
+			var marker = $.extend(true, {}, selected_markers[i], {additional:{type:'selected'}});
 			addMarker(marker);
 		}
 	};
