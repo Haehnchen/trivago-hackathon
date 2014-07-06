@@ -1,9 +1,9 @@
-var hotelApiBackend = '/Webservice/hotel/dortmund?callback=?';
+var hotelApiBackend = '/Webservice/hotel/';
 
 var markerTemplate = '<div class="row"><div class="col-md-6"><h2 class="name">%name%</h2><div class="rating">Rating: %rating%</div><div class="price rating">Preis: %price%</div></div><div class="col-md-6"><img src="%imageURL%"></div></div><div class="description">%description%</div>';
 
 
-var addMarkerTooltipEvents = function(marker, markerTemplate) {
+var addMarkerTooltipEvents = function(marker, markerTemplate, id) {
 
     var tooltip = new Tooltip({map: marker.map}, marker);
     tooltip.bindTo("text", marker, "tooltip");
@@ -12,7 +12,7 @@ var addMarkerTooltipEvents = function(marker, markerTemplate) {
 
         $('.gmap-tooltip').remove();
 
-        $.getJSON(hotelApiBackend, function(data) {
+        $.getJSON(hotelApiBackend + id + '?callback=?', function(data) {
             var foo = markerTemplate;
 
             data['price'] = (Math.round(parseFloat(data['price']) * 100) / 100) + ' &euro;';
@@ -53,7 +53,7 @@ $(function() {
             return;
         }
 
-        addMarkerTooltipEvents(param1.marker, markerTemplate);
+        addMarkerTooltipEvents(param1.marker, markerTemplate, param1.additional.id);
     });
 
 });
