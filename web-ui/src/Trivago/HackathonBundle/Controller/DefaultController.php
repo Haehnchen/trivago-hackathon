@@ -111,4 +111,24 @@ class DefaultController extends Controller
 
     }
 
+    public function hotelResultsPostAction(Request $request) {
+
+
+        $items = array();
+        $hotels = $request->request->get('hotels');
+
+        foreach($hotels as $hotel) {
+            $items[] = array(
+                'name' => 'Hotel foo id:' . $hotel['id'],
+                'image' => 'http://lorempixel.com/400/200',
+                'description' => 'fooo',
+            );
+        }
+
+        return $this->render('TrivagoHackathonBundle:Default:hotel_results.html.twig', array(
+            'items' => $items,
+        ));
+
+    }
+
 }
